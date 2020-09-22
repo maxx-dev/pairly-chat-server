@@ -1,0 +1,47 @@
+{
+  "name": "server",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "forever": "forever start --uid chat.pairly -l forever.log -o out.log -a -e err.log --killSignal=SIGTERM server.js",
+    "pm2": "pm2 start server.js --name 'chat.pairly' -o out.log -e err.log",
+    "logs": "tail -f -n 5000 out.log ",
+    "git": "git add . && git commit -m 'init' && git push origin master"
+  },
+  "env": {
+    "env": "DEVELOPMENT",
+    "uid": "pwa-chat-app",
+    "envPath": "../env/env.js",
+    "swVersion": "0.0.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modrena/logger": "^1.0.11",
+    "apn": "^2.2.0",
+    "aws-sdk": "^2.699.0",
+    "base64url": "^3.0.1",
+    "body-parser": "^1.19.0",
+    "cbor": "^5.0.2",
+    "cheerio": "^1.0.0-rc.3",
+    "elliptic": "^6.5.3",
+    "express": "^4.17.1",
+    "express-static-gzip": "^2.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "jsrsasign": "^8.0.20",
+    "mailcomposer": "^4.0.2",
+    "mysql": "^2.18.1",
+    "qrcode": "^1.4.4",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "speakeasy": "^2.0.0",
+    "uuid": "^8.2.0",
+    "web-push": "^3.4.4"
+  },
+  "devDependencies": {}
+}
