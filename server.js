@@ -3,7 +3,10 @@ const express = require('express');
 const https = require('https');
 const path = require('path');
 const expressStaticGzip = require('express-static-gzip');
-con = require("@modrena/logger");
+con = {
+	log:console.log,
+	logRouteC:console.log
+}
 const packageJSON = require('./package.json');
 process.env.ENV = packageJSON.env.env;
 let swFile = process.env.ENV === 'PRODUCTION' ? fs.readFileSync('../client/sw.js') : fs.readFileSync('../pairly-chat-pwa/public/sw.js');
