@@ -20,16 +20,17 @@ app.users = {};
 
 //if (process.env.ENV === 'DEVELOPMENT') process.env.PORT = 443;
 app.set('port', process.env.PORT || 8081);
-let certPath = "cert";
+let certPath =  process.env.ENV === 'PRODUCTION' ? '/home/ubuntu/.acme.sh/chat.pairly.app' : 'cert';
 const httpsOptions = {
-	key: fs.readFileSync(path.join(certPath, "pairly.app.key")),
-	cert: fs.readFileSync(path.join(certPath, "pairly.app.cer"))
+	key: fs.readFileSync(path.join(certPath, process.env.DOMAIN+'.key')),
+	cert: fs.readFileSync(path.join(certPath, process.env.DOMAIN+'.cer'))
 };
 con.log('-----------------------------------------------','green');
 con.log('| ENV           ',process.env.ENV,'green');
 con.log('| VERSION       ',packageJSON.version,'green');
 con.log('| PORT          ',app.get('port'),'green');
 con.log('| SW_VERSION    ',process.env.SERVICE_WORKER_VERSION);
+con.log('| DOMAIN        ',process.env.DOMAIN);
 con.log('-----------------------------------------------','green');
 const server = https.createServer(httpsOptions, app).listen(app.get('port'),'0.0.0.0', function() {
 	//con.log('Express HTTPS server listening on port ' + app.get('port'));
