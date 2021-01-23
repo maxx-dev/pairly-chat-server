@@ -22,7 +22,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@modrena/logger": "^1.0.11",
     "apn": "^2.2.0",
     "aws-sdk": "^2.699.0",
     "base64url": "^3.0.1",
